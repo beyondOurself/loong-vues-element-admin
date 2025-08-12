@@ -1,29 +1,13 @@
+<!-- src/App.vue -->
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
-import CalcParent  from "@/demo/CalcParent.vue"
-import CalcSub  from "@/demo/CalcSub.vue"
-
+import { ElConfigProvider } from 'element-plus';
+import { useAppStore } from '@/store/modules/app';
+const appStore = useAppStore();
 </script>
 
 <template>
-  <div>
-     <CalcParent />
-     <CalcSub />
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-config-provider :locale="appStore.locale" >
+    <router-view />
+  </el-config-provider>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
